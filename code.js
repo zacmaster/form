@@ -6,7 +6,7 @@ var jugadores = []
 getJugadores().then(
     () => {
         console.log('cargando jugadores')
-        let cadena = `<div>`
+        let cadena = `<div class="cardsContainer">`
         jugadores.map((jugador,index) =>{
             cadena += card(jugador,index)
 
@@ -28,11 +28,14 @@ const registrarJugador = (e) => {
     console.log(jugadorObj)
     e.preventDefault() //que onda esto ? no va arriba ?
     console.log('Registrando jugador...')
-    postJugador(jugadorObj)
+    postJugador(jugadorObj).then(() => {
+        dqs('#playerForm').reset()
+        dqs('#navbarToggleExternalContent').class = 'collapse'
+    })
 }
 
 function postJugador (jugador){
-    fetch(url, {
+    return fetch(url, {
     method: 'POST', // or 'PUT'
     body: JSON.stringify(jugador), // data can be `string` or {object}!
     headers:{
@@ -74,7 +77,7 @@ const card = (jugador,index) => {
                 <p class="card-text" style="flex-grow: 2">
                     Este jugador destaca por tener suerte y meter goles fantasma a último momento del partido.
                 </p>
-                <img src="https://pngimage.net/wp-content/uploads/2018/06/soccer-ball-icon-png-7.png" style="flex-grow: 1" />
+                <img src="https://pngimage.net/wp-content/uploads/2018/06/soccer-ball-icon-png-7.png" style="flex-grow: 1; height: 100%" />
             </div>
         </div>
     </div>

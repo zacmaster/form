@@ -23,3 +23,8 @@
 .letraCursiva{
     font-family: 'Srisakdi', cursive !important;
 }
+
+.cardsContainer{
+    display: flex;
+    flex-direction: column-reverse;
+}
