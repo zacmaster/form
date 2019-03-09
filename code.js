@@ -3,18 +3,17 @@ const url = 'https://api-jugadores-jere.herokuapp.com/jugadores'
 
 var jugadores = []
 
-getJugadores().then(
-    () => {
-        console.log('cargando jugadores')
+getJugadores().then(() => actualizarListaJugadores())
+
+const actualizarListaJugadores = () => {
+    console.log('cargando jugadores')
         let cadena = `<div class="cardsContainer">`
         jugadores.map((jugador,index) =>{
             cadena += card(jugador,index)
 
         })
         dqs('#cards').innerHTML = cadena + '</div>'
-    }
-
-)
+}
 
 const registrarJugador = (e) => {
 
@@ -26,11 +25,15 @@ const registrarJugador = (e) => {
     jugadorObj.nationality = dqs('#nationality').value
     jugadorObj.number = parseInt(dqs('#number').value)
     console.log(jugadorObj)
+
+    dqs('#playerForm').reset()
+    dqs('#navbarToggleExternalContent').className = 'collapse'
+
+
     e.preventDefault() //que onda esto ? no va arriba ?
     console.log('Registrando jugador...')
     postJugador(jugadorObj).then(() => {
-        dqs('#playerForm').reset()
-        dqs('#navbarToggleExternalContent').class = 'collapse'
+        getJugadores().then(() => actualizarListaJugadores())
     })
 }
 
@@ -53,10 +56,11 @@ const getJugador = (e) => {
     getJugadores(dorsal)
 }
 
-function getJugadores(dorsal){
+function getJugadores(){
     return fetch(url)
     .then(r => r.json())
     .then(json => {
+        console.log('getting jugadores...')
         jugadores = [...json]
     })
 }
