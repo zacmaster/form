@@ -1,19 +1,17 @@
 const dqs = element => document.querySelector(element)
-const url = 'http://192.168.1.54:4000/jugadores'
+const url = 'https://api-jugadores-jere.herokuapp.com/jugadores'
 
 var jugadores = []
 
 getJugadores().then(
     () => {
         console.log('cargando jugadores')
-        let cadena = `<ul>`
-        jugadores.map(jugador =>{
-            cadena += `
-                <li>${jugador.name}</li>
+        let cadena = `<div>`
+        jugadores.map((jugador,index) =>{
+            cadena += card(jugador,index)
 
-            `
         })
-        dqs('#listaJugadores').innerHTML = cadena + '</ul>'
+        dqs('#cards').innerHTML = cadena + '</div>'
     }
 
 )
@@ -59,3 +57,27 @@ function getJugadores(dorsal){
         jugadores = [...json]
     })
 }
+
+
+
+const card = (jugador,index) => {
+    const colorClass = index % 2 == 0 ? {header: 'hd1', body:'bd1' } : {header: 'hd2', body:'bd2' } 
+    return `
+    <div class="card m-2">
+        <div class="card-header ${colorClass.header}">
+            <span class="font-weight-bold">#${jugador.number}</span> ${jugador.lastname}
+        </div>
+        <div class="card-body ${colorClass.body} ">
+            <h2 class="card-title">${jugador.name}</h2>
+            <h6 class="card-subtitle letraCursiva">(${jugador.nationality})</h6>
+            <div style="display: flex">
+                <p class="card-text" style="flex-grow: 2">
+                    Este jugador destaca por tener suerte y meter goles fantasma a último momento del partido.
+                </p>
+                <img src="https://pngimage.net/wp-content/uploads/2018/06/soccer-ball-icon-png-7.png" style="flex-grow: 1" />
+            </div>
+        </div>
+    </div>
+    
+    `
+} 

@@ -1,3 +1,25 @@
 #formulario{
-    background-origin: padding-box;
+    /* background-origin: padding-box; */
+
+}
+.form-group label{
+    display: none !important;
+}
+
+.hd1{
+    background: #2980b9; 
+}
+.hd2{
+    background: #27ae60;
+}
+.bd1{
+    background: #3498db;
+}
+.bd2{
+    background: #2ecc71;
+}
+
+
+.letraCursiva{
+    font-family: 'Srisakdi', cursive !important;
 }
