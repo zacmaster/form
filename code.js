@@ -74,7 +74,7 @@ const card = (jugador,index) => {
                 <p class="card-text" style="flex-grow: 2">
                     Este jugador destaca por tener suerte y meter goles fantasma a último momento del partido.
                 </p>
-                <img src="https://pngimage.net/wp-content/uploads/2018/06/soccer-ball-icon-png-7.png" style="flex-grow: 1" />
+                <img src="https://pngimage.net/wp-content/uploads/2018/06/soccer-ball-icon-png-7.png" style="flex-grow: 1;" />
             </div>
         </div>
     </div>
