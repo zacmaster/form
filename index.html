@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container"  id="formulario">
+        <form onsubmit="registrarJugador(event)" method="POST">
+      
+            <label for="name">First Name</label><br>
+            <input type="text" id="name" name="firstname" placeholder="Player name..">
+            <br>
+            <label for="name">Last Name</label> <br>
+            <input type="text" id="lastname" name="lastname" placeholder="Player last name..">
+            <br>
+            
+            <label for="age">age</label><br>
+            <input type="number" id="age" name="age" placeholder="age.." maxlength="2">
+            <br>
+
+            <label for="nationality">Country</label><br>
+            <select id="nationality" name="country">
+            
+                <option value="argentino">Argentino</option>
+                <option value="brasilero">Brasilero</option>
+                <option value="boliviano">Boliviano</option>
+                <option value="chileno">Chileno</option>
+                <option value="colombiano">Colombiano</option>
+                <option value="paraguayo">Paraguayo</option>
+                <option value="peruano">Peruano</option>
+                <option value="uruguayo">Uruguayo</option>
+                <option value="venezolano">Venezolano</option>
+            
+            </select>
+            <br>
+
+            <label for="number">number</label><br>
+            <input type="number" id="number" name="number" placeholder="number.." maxlength="2">
+            <br>
+
+            <br>
+            <input type="submit" value="Submit">
+      
+        </form>
+      </div> 
+      <script src="code.js"></script>
+</body>
+</html>
